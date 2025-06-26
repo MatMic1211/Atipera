@@ -3,8 +3,6 @@ import { ElementService, PeriodicElement } from '../../app/services/element.serv
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 
-
-
 @Component({
   selector: 'element-table',
   standalone: false,
@@ -24,21 +22,25 @@ export class ElementTableComponent implements OnInit {
     this.isLoading = true;
     this.elementService.getElements().subscribe(data => {
       this.dataSource = data;
-      this.filteredData = data; 
+      this.filteredData = data;
       this.isLoading = false;
     });
 
     this.filterControl.valueChanges
-      .pipe(debounceTime(2000))
+      .pipe(debounceTime(500))
       .subscribe(value => {
-        const filterValue = value?.toString().toLowerCase() ?? '';
-        this.filteredData = this.dataSource.filter(el =>
-          el.name.toLowerCase().includes(filterValue) ||
-          el.symbol.toLowerCase().includes(filterValue) ||
-          el.position.toString().includes(filterValue) ||
-          el.weight.toString().includes(filterValue)
-        );
+        this.isLoading = true;
+
+        setTimeout(() => {
+          const filterValue = value?.toString().toLowerCase() ?? '';
+          this.filteredData = this.dataSource.filter(el =>
+            el.name.toLowerCase().includes(filterValue) ||
+            el.symbol.toLowerCase().includes(filterValue) ||
+            el.position.toString().includes(filterValue) ||
+            el.weight.toString().includes(filterValue)
+          );
+          this.isLoading = false;
+        }, 300);
       });
   }
-
 }

@@ -1,14 +1,15 @@
-<app-element-loader *ngIf="isLoading"></app-element-loader>
-
 <mat-card class="table-card">
   <h2 class="table-title">Tabela pierwiastków</h2>
+
   <mat-form-field appearance="outline" class="filter-input">
     <mat-label>Filtruj</mat-label>
     <input matInput [formControl]="filterControl" placeholder="Szukaj po nazwie, symbolu, pozycji lub wadze">
   </mat-form-field>
 
   <div class="table-container">
-    <table mat-table [dataSource]="filteredData" matSort class="mat-elevation-z2">
+    <app-element-loader *ngIf="isLoading"></app-element-loader>
+
+    <table mat-table [dataSource]="filteredData" matSort class="mat-elevation-z2" *ngIf="!isLoading">
       <ng-container matColumnDef="number">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Pozycja</th>
         <td mat-cell *matCellDef="let element">{{element.position}}</td>
