@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ElementTableComponent } from '../components/element-table/element-table.component';
 import { MatSortModule } from '@angular/material/sort';
+import { ElementLoaderComponent } from '../components/element-loader/element-loader.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MatSortModule } from '@angular/material/sort';
     AppRoutingModule,
     MatTableModule,
     MatCardModule,
-    MatSortModule 
+    MatSortModule,
+    ElementLoaderComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

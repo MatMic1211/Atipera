@@ -12,12 +12,16 @@ import { ElementService, PeriodicElement } from '../../app/services/element.serv
 export class ElementTableComponent implements OnInit {
   displayedColumns: string[] = ['number', 'name', 'weight', 'symbol'];
   dataSource: PeriodicElement[] = [];
+  isLoading: boolean = false;
 
   constructor(private elementService: ElementService) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.elementService.getElements().subscribe(data => {
       this.dataSource = data;
+      this.isLoading = false;
     });
   }
+
 }
