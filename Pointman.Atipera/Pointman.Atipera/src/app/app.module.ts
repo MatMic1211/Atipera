@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { ElementTableComponent } from '../components/element-table/element-table.component';
 import { MatSortModule } from '@angular/material/sort';
 import { ElementLoaderComponent } from '../components/element-loader/element-loader.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { ElementLoaderComponent } from '../components/element-loader/element-loa
     MatTableModule,
     MatCardModule,
     MatSortModule,
-    ElementLoaderComponent
+    ElementLoaderComponent,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

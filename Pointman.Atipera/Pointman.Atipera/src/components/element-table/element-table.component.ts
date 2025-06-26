@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementService, PeriodicElement } from '../../app/services/element.service';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs';
 
 
 
@@ -12,7 +14,9 @@ import { ElementService, PeriodicElement } from '../../app/services/element.serv
 export class ElementTableComponent implements OnInit {
   displayedColumns: string[] = ['number', 'name', 'weight', 'symbol'];
   dataSource: PeriodicElement[] = [];
+  filteredData: PeriodicElement[] = [];
   isLoading: boolean = false;
+  filterControl = new FormControl('');
 
   constructor(private elementService: ElementService) { }
 
@@ -20,8 +24,21 @@ export class ElementTableComponent implements OnInit {
     this.isLoading = true;
     this.elementService.getElements().subscribe(data => {
       this.dataSource = data;
+      this.filteredData = data; 
       this.isLoading = false;
     });
+
+    this.filterControl.valueChanges
+      .pipe(debounceTime(2000))
+      .subscribe(value => {
+        const filterValue = value?.toString().toLowerCase() ?? '';
+        this.filteredData = this.dataSource.filter(el =>
+          el.name.toLowerCase().includes(filterValue) ||
+          el.symbol.toLowerCase().includes(filterValue) ||
+          el.position.toString().includes(filterValue) ||
+          el.weight.toString().includes(filterValue)
+        );
+      });
   }
 
 }
