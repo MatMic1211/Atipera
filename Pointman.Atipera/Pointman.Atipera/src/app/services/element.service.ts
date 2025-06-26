@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, delay } from 'rxjs';
 
 export interface PeriodicElement {
   position: number;
@@ -27,6 +27,6 @@ export class ElementService {
   constructor() { }
 
   getElements(): Observable<PeriodicElement[]> {
-    return of(this.elements);
+    return of(this.elements).pipe(delay(2000)); 
   }
 }
