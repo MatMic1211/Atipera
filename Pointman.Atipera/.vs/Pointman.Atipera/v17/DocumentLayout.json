@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|c:\\tempgit\\pointman.atipera\\pointman.atipera\\pointman.atipera\\src\\components\\element-table\\element-table.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|solutionrelative:pointman.atipera\\src\\components\\element-table\\element-table.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|c:\\tempgit\\pointman.atipera\\pointman.atipera\\pointman.atipera\\src\\components\\element-table\\element-table.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|solutionrelative:pointman.atipera\\src\\components\\element-table\\element-table.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|c:\\tempgit\\pointman.atipera\\pointman.atipera\\pointman.atipera\\src\\app\\services\\element.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|solutionrelative:pointman.atipera\\src\\app\\services\\element.service.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|c:\\tempgit\\pointman.atipera\\pointman.atipera\\pointman.atipera\\src\\components\\element-table\\element-table.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|solutionrelative:pointman.atipera\\src\\components\\element-table\\element-table.component.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|c:\\tempgit\\pointman.atipera\\pointman.atipera\\pointman.atipera\\src\\components\\element-table\\element-table.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|solutionrelative:pointman.atipera\\src\\components\\element-table\\element-table.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|c:\\tempgit\\pointman.atipera\\pointman.atipera\\pointman.atipera\\src\\components\\element-table\\element-table.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9EEE88E9-AF95-4CF5-926A-336AB804E65F}|Pointman.Atipera\\Pointman.Atipera.esproj|solutionrelative:pointman.atipera\\src\\components\\element-table\\element-table.component.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,38 +34,51 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "element.service.ts",
+              "DocumentMoniker": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\app\\services\\element.service.ts",
+              "RelativeDocumentMoniker": "Pointman.Atipera\\src\\app\\services\\element.service.ts",
+              "ToolTip": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\app\\services\\element.service.ts*",
+              "RelativeToolTip": "Pointman.Atipera\\src\\app\\services\\element.service.ts*",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwCUAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-27T14:30:18.483Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "element-table.component.ts",
               "DocumentMoniker": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\components\\element-table\\element-table.component.ts",
               "RelativeDocumentMoniker": "Pointman.Atipera\\src\\components\\element-table\\element-table.component.ts",
-              "ToolTip": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\components\\element-table\\element-table.component.ts",
-              "RelativeToolTip": "Pointman.Atipera\\src\\components\\element-table\\element-table.component.ts",
-              "ViewState": "AQIAACsAAAAAAAAAAAAAAC8AAAAhAAAA",
+              "ToolTip": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\components\\element-table\\element-table.component.ts*",
+              "RelativeToolTip": "Pointman.Atipera\\src\\components\\element-table\\element-table.component.ts*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADsAAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-06-26T16:20:46.032Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "element-table.component.html",
               "DocumentMoniker": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\components\\element-table\\element-table.component.html",
               "RelativeDocumentMoniker": "Pointman.Atipera\\src\\components\\element-table\\element-table.component.html",
               "ToolTip": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\components\\element-table\\element-table.component.html",
               "RelativeToolTip": "Pointman.Atipera\\src\\components\\element-table\\element-table.component.html",
-              "ViewState": "AQIAADUAAAAAAAAAAAAUwEsAAABKAAAA",
+              "ViewState": "AQIAADUAAAAAAAAAAAAUwEUAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2025-06-26T14:38:01.386Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "element-table.component.css",
               "DocumentMoniker": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\components\\element-table\\element-table.component.css",
               "RelativeDocumentMoniker": "Pointman.Atipera\\src\\components\\element-table\\element-table.component.css",
-              "ToolTip": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\components\\element-table\\element-table.component.css*",
-              "RelativeToolTip": "Pointman.Atipera\\src\\components\\element-table\\element-table.component.css*",
+              "ToolTip": "C:\\TempGit\\Pointman.Atipera\\Pointman.Atipera\\Pointman.Atipera\\src\\components\\element-table\\element-table.component.css",
+              "RelativeToolTip": "Pointman.Atipera\\src\\components\\element-table\\element-table.component.css",
               "ViewState": "AQIAAHYAAAAAAAAAAAAIwGQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2025-06-26T16:20:50.169Z",

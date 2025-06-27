@@ -24,9 +24,18 @@ export class ElementService {
     { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
     { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' },
   ];
+
   constructor() { }
 
   getElements(): Observable<PeriodicElement[]> {
-    return of(this.elements).pipe(delay(2000)); 
+    return of(this.elements).pipe(delay(2000));
+  }
+
+  updateElement(updatedElement: PeriodicElement): Observable<PeriodicElement> {
+    const index = this.elements.findIndex(e => e.position === updatedElement.position);
+    if (index !== -1) {
+      this.elements[index] = { ...updatedElement };
+    }
+    return of(this.elements[index]).pipe(delay(500));
   }
 }

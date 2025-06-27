@@ -30,23 +30,20 @@ export class ElementTableComponent implements OnInit {
       this.isLoading = false;
     });
 
-    this.filterControl.valueChanges
-      .subscribe(() => {
-        this.isLoading = true;  
-      });
+    this.filterControl.valueChanges.subscribe(() => {
+      this.isLoading = true;
+    });
 
-    this.filterControl.valueChanges
-      .pipe(debounceTime(2000))
-      .subscribe(value => {
-        const filterValue = value?.toString().toLowerCase() ?? '';
-        this.dataSource = this.fullData.filter(el =>
-          el.name.toLowerCase().includes(filterValue) ||
-          el.symbol.toLowerCase().includes(filterValue) ||
-          el.position.toString().includes(filterValue) ||
-          el.weight.toString().includes(filterValue)
-        );
-        this.isLoading = false;  
-      });
+    this.filterControl.valueChanges.pipe(debounceTime(2000)).subscribe(value => {
+      const filterValue = value?.toString().toLowerCase() ?? '';
+      this.dataSource = this.fullData.filter(el =>
+        el.name.toLowerCase().includes(filterValue) ||
+        el.symbol.toLowerCase().includes(filterValue) ||
+        el.position.toString().includes(filterValue) ||
+        el.weight.toString().includes(filterValue)
+      );
+      this.isLoading = false;
+    });
   }
 
   openEditDialog(element: PeriodicElement): void {
@@ -56,14 +53,18 @@ export class ElementTableComponent implements OnInit {
   }
 
   saveEdit(): void {
-    if (this.editedElement) {
-      const index = this.fullData.findIndex(e => e.position === this.editedElement?.position);
+    if (!this.editedElement) {
+      return;
+    }
+
+    this.elementService.updateElement(this.editedCopy).subscribe(updated => {
+      const index = this.fullData.findIndex(e => e.position === updated.position);
       if (index !== -1) {
-        this.fullData[index] = { ...this.editedCopy };
+        this.fullData[index] = updated;
         this.dataSource = [...this.fullData];
       }
-    }
-    this.closeEditDialog();
+      this.closeEditDialog();
+    });
   }
 
   closeEditDialog(): void {
