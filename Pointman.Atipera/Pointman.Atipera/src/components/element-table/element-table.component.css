@@ -44,6 +44,7 @@ tr.mat-row:hover {
   width: 100%;
   margin-bottom: 20px;
 }
+
 .dialog-backdrop {
   position: fixed;
   top: 0;
@@ -70,9 +71,43 @@ tr.mat-row:hover {
 .dialog-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 12px;
+  gap: 16px;
 }
-.edit-button {
+
+  .dialog-actions button {
+    min-width: 100px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+  }
+.dialog-actions button.mat-button
+{
+color: #666666;
+ background-color: transparent;
+}
+.dialog-actions button.mat-button:hover
+{
+background-color: #e0e0e0;
+ color: #444444;
+}
+
+.dialog-actions button.mat-flat-button
+{
+background-color: #3f51b5;
+color: white;
+}
+
+.dialog-actions button.mat-flat-button:hover
+{
+background-color: #303f9f;
+ box-shadow: 0 0 8px #303f9f88; 
+}
+
+.edit-button
+{
   border-radius: 20px;
   padding: 6px 12px;
   font-weight: 500;
