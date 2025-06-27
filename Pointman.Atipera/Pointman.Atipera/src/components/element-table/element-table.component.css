@@ -72,3 +72,21 @@ tr.mat-row:hover {
   justify-content: flex-end;
   gap: 12px;
 }
+.edit-button {
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-weight: 500;
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: background-color 0.2s;
+}
+
+  .edit-button mat-icon {
+    font-size: 20px;
+  }
+
+  .edit-button:hover {
+    background-color: #ffcc80;
+  }
