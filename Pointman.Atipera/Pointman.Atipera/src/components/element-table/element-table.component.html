@@ -1,41 +1,41 @@
 <mat-card class="table-card">
-  <h2 class="table-title">Tabela pierwiastków</h2>
+  <h2 class="table-title">Table of elements</h2>
 
   <mat-form-field appearance="outline" class="filter-input">
-    <mat-label>Filtruj</mat-label>
-    <input matInput [formControl]="filterControl" placeholder="Szukaj po nazwie, symbolu, pozycji lub wadze">
+    <mat-label>Filter</mat-label>
+    <input matInput [formControl]="filterControl" placeholder="Search by name, symbol, position or weight">
   </mat-form-field>
 
   <div class="table-container">
     <app-element-loader *ngIf="isLoading"></app-element-loader>
 
-    <table mat-table [dataSource]="filteredData" matSort class="mat-elevation-z2" *ngIf="!isLoading">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2" *ngIf="!isLoading">
       <ng-container matColumnDef="number">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Pozycja</th>
+        <th mat-header-cell *matHeaderCellDef>Position</th>
         <td mat-cell *matCellDef="let element">{{element.position}}</td>
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nazwa</th>
+        <th mat-header-cell *matHeaderCellDef>Name</th>
         <td mat-cell *matCellDef="let element">{{element.name}}</td>
       </ng-container>
 
       <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Waga</th>
+        <th mat-header-cell *matHeaderCellDef>Weight</th>
         <td mat-cell *matCellDef="let element">{{element.weight}}</td>
       </ng-container>
 
       <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Symbol</th>
+        <th mat-header-cell *matHeaderCellDef>Symbol</th>
         <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
       </ng-container>
 
       <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef>Akcje</th>
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let element">
           <button mat-flat-button color="accent" class="edit-button" (click)="openEditDialog(element)">
             <mat-icon>edit</mat-icon>
-            <span>Edytuj</span>
+            <span>Edit</span>
           </button>
         </td>
       </ng-container>
@@ -45,23 +45,24 @@
     </table>
   </div>
 </mat-card>
+
 <ng-template [ngIf]="editDialogOpen">
   <div class="dialog-backdrop">
     <div class="dialog-content">
       <h3>Edytuj element</h3>
 
       <mat-form-field appearance="outline">
-        <mat-label>Pozycja</mat-label>
+        <mat-label>Position</mat-label>
         <input matInput type="number" [(ngModel)]="editedCopy.position">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Nazwa</mat-label>
+        <mat-label>Name</mat-label>
         <input matInput [(ngModel)]="editedCopy.name">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
-        <mat-label>Waga</mat-label>
+        <mat-label>Weight</mat-label>
         <input matInput type="number" [(ngModel)]="editedCopy.weight">
       </mat-form-field>
 
@@ -71,8 +72,8 @@
       </mat-form-field>
 
       <div class="dialog-actions">
-        <button mat-button (click)="closeEditDialog()">Anuluj</button>
-        <button mat-flat-button color="primary" (click)="saveEdit()">Zapisz</button>
+        <button mat-flat-button color="primary" (click)="saveEdit()">Save</button>
+        <button mat-button (click)="closeEditDialog()">Cancel</button>
       </div>
     </div>
   </div>
