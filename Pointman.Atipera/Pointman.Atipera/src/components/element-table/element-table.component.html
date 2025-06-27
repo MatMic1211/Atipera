@@ -30,8 +30,47 @@
         <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
       </ng-container>
 
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Akcje</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-button color="primary" (click)="openEditDialog(element)">Edytuj</button>
+        </td>
+      </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
 </mat-card>
+<ng-template [ngIf]="editDialogOpen">
+  <div class="dialog-backdrop">
+    <div class="dialog-content">
+      <h3>Edytuj element</h3>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Pozycja</mat-label>
+        <input matInput type="number" [(ngModel)]="editedCopy.position">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Nazwa</mat-label>
+        <input matInput [(ngModel)]="editedCopy.name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Waga</mat-label>
+        <input matInput type="number" [(ngModel)]="editedCopy.weight">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Symbol</mat-label>
+        <input matInput [(ngModel)]="editedCopy.symbol">
+      </mat-form-field>
+
+      <div class="dialog-actions">
+        <button mat-button (click)="closeEditDialog()">Anuluj</button>
+        <button mat-flat-button color="primary" (click)="saveEdit()">Zapisz</button>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -10,11 +10,14 @@ import { debounceTime } from 'rxjs';
   styleUrls: ['./element-table.component.css']
 })
 export class ElementTableComponent implements OnInit {
-  displayedColumns: string[] = ['number', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['number', 'name', 'weight', 'symbol', 'actions'];
   dataSource: PeriodicElement[] = [];
   filteredData: PeriodicElement[] = [];
   isLoading: boolean = false;
   filterControl = new FormControl('');
+  editDialogOpen = false;
+  editedElement: PeriodicElement | null = null;
+  editedCopy: PeriodicElement = { position: 0, name: '', weight: 0, symbol: '' };
 
   constructor(private elementService: ElementService) { }
 
@@ -42,5 +45,26 @@ export class ElementTableComponent implements OnInit {
           this.isLoading = false;
         }, 300);
       });
+  }
+  openEditDialog(element: PeriodicElement): void {
+    this.editedElement = element;
+    this.editedCopy = { ...element }; 
+    this.editDialogOpen = true;
+  }
+
+  saveEdit(): void {
+    if (this.editedElement) {
+      const index = this.dataSource.findIndex(e => e.position === this.editedElement?.position);
+      if (index !== -1) {
+        this.dataSource[index] = { ...this.editedCopy };
+        this.filteredData = [...this.dataSource];
+      }
+    }
+    this.closeEditDialog();
+  }
+
+  closeEditDialog(): void {
+    this.editDialogOpen = false;
+    this.editedElement = null;
   }
 }
