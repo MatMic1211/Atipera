@@ -12,7 +12,7 @@ import { debounceTime } from 'rxjs';
 export class ElementTableComponent implements OnInit {
   displayedColumns: string[] = ['number', 'name', 'weight', 'symbol', 'actions'];
   dataSource: PeriodicElement[] = [];
-  filteredData: PeriodicElement[] = [];
+  fullData: PeriodicElement[] = [];
   isLoading: boolean = false;
   filterControl = new FormControl('');
   editDialogOpen = false;
@@ -23,41 +23,44 @@ export class ElementTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
+
     this.elementService.getElements().subscribe(data => {
-      this.dataSource = data;
-      this.filteredData = data;
+      this.fullData = data;
+      this.dataSource = [...data];
       this.isLoading = false;
     });
 
     this.filterControl.valueChanges
-      .pipe(debounceTime(500))
-      .subscribe(value => {
-        this.isLoading = true;
+      .subscribe(() => {
+        this.isLoading = true;  
+      });
 
-        setTimeout(() => {
-          const filterValue = value?.toString().toLowerCase() ?? '';
-          this.filteredData = this.dataSource.filter(el =>
-            el.name.toLowerCase().includes(filterValue) ||
-            el.symbol.toLowerCase().includes(filterValue) ||
-            el.position.toString().includes(filterValue) ||
-            el.weight.toString().includes(filterValue)
-          );
-          this.isLoading = false;
-        }, 300);
+    this.filterControl.valueChanges
+      .pipe(debounceTime(2000))
+      .subscribe(value => {
+        const filterValue = value?.toString().toLowerCase() ?? '';
+        this.dataSource = this.fullData.filter(el =>
+          el.name.toLowerCase().includes(filterValue) ||
+          el.symbol.toLowerCase().includes(filterValue) ||
+          el.position.toString().includes(filterValue) ||
+          el.weight.toString().includes(filterValue)
+        );
+        this.isLoading = false;  
       });
   }
+
   openEditDialog(element: PeriodicElement): void {
     this.editedElement = element;
-    this.editedCopy = { ...element }; 
+    this.editedCopy = { ...element };
     this.editDialogOpen = true;
   }
 
   saveEdit(): void {
     if (this.editedElement) {
-      const index = this.dataSource.findIndex(e => e.position === this.editedElement?.position);
+      const index = this.fullData.findIndex(e => e.position === this.editedElement?.position);
       if (index !== -1) {
-        this.dataSource[index] = { ...this.editedCopy };
-        this.filteredData = [...this.dataSource];
+        this.fullData[index] = { ...this.editedCopy };
+        this.dataSource = [...this.fullData];
       }
     }
     this.closeEditDialog();
