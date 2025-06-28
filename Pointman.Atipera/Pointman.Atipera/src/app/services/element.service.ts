@@ -37,6 +37,6 @@ export class ElementService {
     if (index !== -1) {
       this.elements[index] = { ...updatedElement };
     }
-    return of(this.elements[index]).pipe(delay(200));
+    return of(this.elements[index]).pipe(delay(100));
   }
 }

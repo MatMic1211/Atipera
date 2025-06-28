@@ -59,11 +59,7 @@ export class ElementTableComponent implements OnInit {
     }
 
     this.elementService.updateElement(this.editedCopy).subscribe(updated => {
-      const index = this.dataSource.findIndex(el => el.id === updated.id);
-      if (index !== -1) {
-        this.dataSource[index] = { ...updated };
-        this.dataSource = [...this.dataSource];
-      }
+      this.dataSource = this.dataSource.map(el => el.id === updated.id ? { ...updated } : el);
       this.closeEditDialog();
     });
   }
