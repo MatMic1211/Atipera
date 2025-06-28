@@ -12,36 +12,37 @@ import { debounceTime } from 'rxjs';
 export class ElementTableComponent implements OnInit {
   displayedColumns: string[] = ['number', 'name', 'weight', 'symbol', 'actions'];
   dataSource: PeriodicElement[] = [];
-  fullData: PeriodicElement[] = [];
   isLoading: boolean = false;
   filterControl = new FormControl('');
   editDialogOpen = false;
   editedElement: PeriodicElement | null = null;
-  editedCopy: PeriodicElement = { position: 0, name: '', weight: 0, symbol: '' };
+  editedCopy: PeriodicElement = { id: 0, position: 0, name: '', weight: 0, symbol: '' };
 
   constructor(private elementService: ElementService) { }
 
   ngOnInit(): void {
-    this.isLoading = true;
-
-    this.elementService.getElements().subscribe(data => {
-      this.fullData = data;
-      this.dataSource = [...data];
-      this.isLoading = false;
-    });
-
-    this.filterControl.valueChanges.subscribe(() => {
-      this.isLoading = true;
-    });
+    this.loadData();
 
     this.filterControl.valueChanges.pipe(debounceTime(2000)).subscribe(value => {
       const filterValue = value?.toString().toLowerCase() ?? '';
-      this.dataSource = this.fullData.filter(el =>
-        el.name.toLowerCase().includes(filterValue) ||
-        el.symbol.toLowerCase().includes(filterValue) ||
-        el.position.toString().includes(filterValue) ||
-        el.weight.toString().includes(filterValue)
-      );
+      this.isLoading = true;
+      this.elementService.getElements().subscribe(data => {
+        this.dataSource = data.filter(el =>
+          el.name.toLowerCase().includes(filterValue) ||
+          el.symbol.toLowerCase().includes(filterValue) ||
+          el.position.toString().includes(filterValue) ||
+          el.weight.toString().includes(filterValue) ||
+          el.id.toString().includes(filterValue)
+        );
+        this.isLoading = false;
+      });
+    });
+  }
+
+  loadData(): void {
+    this.isLoading = true;
+    this.elementService.getElements().subscribe(data => {
+      this.dataSource = data;
       this.isLoading = false;
     });
   }
@@ -58,10 +59,10 @@ export class ElementTableComponent implements OnInit {
     }
 
     this.elementService.updateElement(this.editedCopy).subscribe(updated => {
-      const index = this.fullData.findIndex(e => e.position === updated.position);
+      const index = this.dataSource.findIndex(el => el.id === updated.id);
       if (index !== -1) {
-        this.fullData[index] = updated;
-        this.dataSource = [...this.fullData];
+        this.dataSource[index] = { ...updated };
+        this.dataSource = [...this.dataSource];
       }
       this.closeEditDialog();
     });

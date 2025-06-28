@@ -7,9 +7,9 @@
   </mat-form-field>
 
   <div class="table-container">
-    <app-element-loader *ngIf="isLoading"></app-element-loader>
+    <app-element-loader *ngIf="isLoading" class="overlay-spinner"></app-element-loader>
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2" *ngIf="!isLoading">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2">
       <ng-container matColumnDef="number">
         <th mat-header-cell *matHeaderCellDef>Position</th>
         <td mat-cell *matCellDef="let element">{{element.position}}</td>
@@ -49,7 +49,7 @@
 <ng-template [ngIf]="editDialogOpen">
   <div class="dialog-backdrop">
     <div class="dialog-content">
-      <h3>Edytuj element</h3>
+      <h3>Edit element</h3>
 
       <mat-form-field appearance="outline">
         <mat-label>Position</mat-label>
