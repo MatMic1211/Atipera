@@ -53,7 +53,7 @@ export class ElementTableComponent implements OnInit {
   }
 
   saveEdit(): void {
-    if (!this.editedElement) {
+    if (!this.editedElement || !this.isEditValid()) {
       return;
     }
 
@@ -70,5 +70,18 @@ export class ElementTableComponent implements OnInit {
   closeEditDialog(): void {
     this.editDialogOpen = false;
     this.editedElement = null;
+  }
+
+  isEditValid(): boolean {
+    return this.editedCopy.name.trim() !== '' &&
+      this.editedCopy.symbol.trim() !== '' &&
+      this.editedCopy.position !== null &&
+      this.editedCopy.weight !== null &&
+      !isNaN(this.editedCopy.position) &&
+      !isNaN(this.editedCopy.weight);
+  }
+
+  isValueNaN(value: any): boolean {
+    return isNaN(value);
   }
 }

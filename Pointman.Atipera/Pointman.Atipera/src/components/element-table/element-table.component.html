@@ -53,26 +53,34 @@
 
       <mat-form-field appearance="outline">
         <mat-label>Position</mat-label>
-        <input matInput type="number" [(ngModel)]="editedCopy.position">
+        <input matInput type="number" [(ngModel)]="editedCopy.position" required>
+        <mat-error *ngIf="editedCopy.position === null || isValueNaN(editedCopy.position)">Position is required</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="editedCopy.name">
+        <input matInput [(ngModel)]="editedCopy.name" required>
+        <mat-error *ngIf="editedCopy.name.trim() === ''">Name is required</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Weight</mat-label>
-        <input matInput type="number" [(ngModel)]="editedCopy.weight">
+        <input matInput type="number" [(ngModel)]="editedCopy.weight" required>
+        <mat-error *ngIf="editedCopy.weight === null || isValueNaN(editedCopy.weight)">Weight is required</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Symbol</mat-label>
-        <input matInput [(ngModel)]="editedCopy.symbol">
+        <input matInput [(ngModel)]="editedCopy.symbol" required>
+        <mat-error *ngIf="editedCopy.symbol.trim() === ''">Symbol is required</mat-error>
       </mat-form-field>
 
       <div class="dialog-actions">
-        <button mat-flat-button color="primary" (click)="saveEdit()">Save</button>
+        <button mat-flat-button color="primary"
+                (click)="saveEdit()"
+                [disabled]="!isEditValid()">
+          Save
+        </button>
         <button mat-button color="warn" (click)="closeEditDialog()">Cancel</button>
       </div>
     </div>
