@@ -29,7 +29,7 @@ export class ElementService {
   constructor() { }
 
   getElements(): Observable<PeriodicElement[]> {
-    return of(this.elements).pipe(delay(2000));
+    return of(this.elements).pipe(delay(1000));
   }
 
   updateElement(updatedElement: PeriodicElement): Observable<PeriodicElement> {
@@ -37,6 +37,6 @@ export class ElementService {
     if (index !== -1) {
       this.elements[index] = { ...updatedElement };
     }
-    return of(this.elements[index]).pipe(delay(100));
+    return of(this.elements[index])
   }
 }
